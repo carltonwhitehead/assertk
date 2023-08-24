@@ -15,7 +15,7 @@ jobs:
   build-linux:
     docker:
       - image: cimg/openjdk:16.0.2-browsers
-    resource_class: medium # TODO: revert prior to upstream PR
+    resource_class: large # TODO: revert prior to upstream PR
     <<: *defaults
     steps:
       - checkout
@@ -83,7 +83,7 @@ jobs:
   build-windows:
     executor:
         name: win/default
-        size: 2xlarge
+        size: large
     steps:
       - checkout
       # TODO: restore cache on windows
