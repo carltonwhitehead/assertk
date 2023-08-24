@@ -86,11 +86,23 @@ jobs:
         size: large
     steps:
       - checkout
-      # TODO: restore cache on windows
+      - run:
+          <<: *gradle_checksum
+      - restore_cache:
+          key: >-
+            gradle-{{ checksum "/tmp/gradle_cache_seed" }}-{{ checksum
+            ".circleci/config.yml" }}-windows
       - run:
           command: ./gradlew build
           shell: bash.exe
-      # TODO: save cache on windows
+      - save_cache:
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+            - ~/.konan
+          key: >-
+            gradle-{{ checksum "/tmp/gradle_cache_seed" }}-{{ checksum
+            ".circleci/config.yml" }}-windows
 workflows:
   version: 2
   build:
