@@ -82,6 +82,7 @@ jobs:
             ".circleci/config.yml" }}-macos
   build-windows:
     executor: win/default
+    size: 2xlarge
     steps:
       - checkout
       # TODO: restore cache on windows
