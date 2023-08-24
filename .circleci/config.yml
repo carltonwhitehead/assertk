@@ -14,7 +14,7 @@ _gradle_checksum: &gradle_checksum
 _gradle_checksum_windows: &gradle_checksum_windows
   name: Generate Cache Checksum (Windows)
   command: >-
-    Get-ChildItem -Filter *.gradle* -Recurse | Get-FileHash | Out-File -FilePath "$env:TEMP\gradle_cache_seed"
+    Get-ChildItem -Filter *.gradle* -Recurse | Get-FileHash | Out-File -FilePath ".circleci/gradle_cache_seed"
 jobs:
   build-linux:
     docker:
@@ -94,7 +94,7 @@ jobs:
           <<: *gradle_checksum_windows
       - restore_cache:
           key: >-
-            gradle-{{ checksum "$TEMP/gradle_cache_seed" }}-{{ checksum
+            gradle-{{ checksum ".circleci/gradle_cache_seed" }}-{{ checksum
             ".circleci/config.yml" }}-windows
       - run:
           command: ./gradlew build
@@ -105,7 +105,7 @@ jobs:
             - ~/.gradle/wrapper
             - ~/.konan
           key: >-
-            gradle-{{ checksum "$TEMP/gradle_cache_seed" }}-{{ checksum
+            gradle-{{ checksum ".circleci/gradle_cache_seed" }}-{{ checksum
             ".circleci/config.yml" }}-windows
 workflows:
   version: 2
