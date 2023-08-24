@@ -88,8 +88,8 @@ jobs:
       - checkout
       # TODO: restore cache on windows
       - run:
-          command: gradlew.bat build
-          shell: cmd.exe
+          command: ./gradlew build
+          shell: bash.exe
       # TODO: save cache on windows
 workflows:
   version: 2
