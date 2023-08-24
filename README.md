@@ -260,3 +260,4 @@ error message.
 ## Contributing to assertk
 
 Contributions are more than welcome! Please see the [Contributing Guidelines](https://github.com/willowtreeapps/assertk/blob/main/Contributing.md) and be mindful of our [Code of Conduct](https://github.com/willowtreeapps/assertk/blob/main/code-of-conduct.md).
+
