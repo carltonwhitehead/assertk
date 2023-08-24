@@ -14,7 +14,7 @@ _gradle_checksum: &gradle_checksum
 _gradle_checksum_windows: &gradle_checksum_windows
   name: Generate Cache Checksum (Windows)
   command: >-
-    find . -name 'build.gradle' | sort | Get-FileHash -Path | awk '{print
+    find . -name 'build.gradle' | sort | xargs Get-FileHash -Path | awk '{print
     $1}' > /tmp/gradle_cache_seed
 jobs:
   build-linux:
