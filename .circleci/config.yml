@@ -11,6 +11,11 @@ _gradle_checksum: &gradle_checksum
   command: >-
     find . -name 'build.gradle' | sort | xargs cat | shasum | awk '{print
     $1}' > /tmp/gradle_cache_seed
+_gradle_checksum_windows: &gradle_checksum_windows
+  name: Generate Cache Checksum (Windows)
+  command: >-
+    find . -name 'build.gradle' | sort | xargs cat | Get-FileHash | awk '{print
+    $1}' > /tmp/gradle_cache_seed
 jobs:
   build-linux:
     docker:
@@ -87,7 +92,7 @@ jobs:
     steps:
       - checkout
       - run:
-          <<: *gradle_checksum
+          <<: *gradle_checksum_windows
       - restore_cache:
           key: >-
             gradle-{{ checksum "/tmp/gradle_cache_seed" }}-{{ checksum
