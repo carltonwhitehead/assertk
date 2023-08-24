@@ -15,7 +15,7 @@ jobs:
   build-linux:
     docker:
       - image: cimg/openjdk:16.0.2-browsers
-    resource_class: xlarge
+    resource_class: medium # TODO: revert prior to upstream PR
     <<: *defaults
     steps:
       - checkout
