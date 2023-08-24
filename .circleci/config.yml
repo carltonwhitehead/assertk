@@ -85,7 +85,9 @@ jobs:
     steps:
       - checkout
       # TODO: restore cache on windows
-      - run: Start-Process -FilePath "gradlew.bat" -ArgumentList "build"
+      - run:
+          command: gradlew.bat build
+          shell: cmd.exe
       # TODO: save cache on windows
 workflows:
   version: 2
