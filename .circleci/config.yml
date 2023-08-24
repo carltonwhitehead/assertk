@@ -94,7 +94,7 @@ jobs:
           <<: *gradle_checksum_windows
       - restore_cache:
           key: >-
-            gradle-{{ checksum "/tmp/gradle_cache_seed" }}-{{ checksum
+            gradle-{{ checksum "$TEMP/gradle_cache_seed" }}-{{ checksum
             ".circleci/config.yml" }}-windows
       - run:
           command: ./gradlew build
@@ -105,7 +105,7 @@ jobs:
             - ~/.gradle/wrapper
             - ~/.konan
           key: >-
-            gradle-{{ checksum "/tmp/gradle_cache_seed" }}-{{ checksum
+            gradle-{{ checksum "$TEMP/gradle_cache_seed" }}-{{ checksum
             ".circleci/config.yml" }}-windows
 workflows:
   version: 2
